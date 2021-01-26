@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 import db from '../db.json';
+
 import Widget from '../src/components/Widget'
 import QuizLogo from '../src/components/QuizLogo'
 import QuizBackground from '../src/components/QuizBackground'
+import FormularioInicial from '../src/components/FormularioInicial';
 import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
+
+import { useRouter } from 'next/router';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -25,6 +29,10 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = React.useState('');
+
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -36,9 +44,21 @@ export default function Home() {
           <Widget.Content>
             <p>{db.description}</p>
           </Widget.Content>
-          <a href="quiz">
-            Vamos Jogar!
-          </a>
+          <FormularioInicial onSubmit={function (infosDoEvento) {
+            infosDoEvento.preventDefault();
+            router.push(`/quiz?name=${name}`);
+          }}>
+            <FormularioInicial.Input
+              onChange={function (infosDoEvento) {
+                setName(infosDoEvento.target.value);
+              }}
+              type='text'
+              placeholder='Me diga seu nome para jogar :)'
+            />
+            <FormularioInicial.Button type='submit' disabled={name.length === 0}>
+              Bora Jogar {name}
+            </FormularioInicial.Button>
+          </FormularioInicial>
         </Widget>
 
         <Widget>

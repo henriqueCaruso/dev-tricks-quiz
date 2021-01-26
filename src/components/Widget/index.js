@@ -16,6 +16,13 @@ const Widget = styled.div`
     line-height: 1;
     margin-bottom: 0;
   }
+  a{
+    padding: 0 10px;
+    list-style:none;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+  }
   p {
     font-size: 14px;
     font-weight: 400;

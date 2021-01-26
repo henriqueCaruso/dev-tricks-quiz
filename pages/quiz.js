@@ -31,6 +31,7 @@ export default function Home() {
                 <QuizLogo />
                 <Widget>
                     <Widget.Header>
+                        <a href="/">{'<'}</a>
                         <h1>DESAFIO DE NAVEGAÇÃO FEITO!</h1>
                     </Widget.Header>
                     <Widget.Content>
